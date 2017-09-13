@@ -34,10 +34,10 @@ class PropertyReader {
     
     val lproperties:Properties = new Properties();
     lproperties.load(new FileInputStream(fileName));
-    
+    lproperties.foreach(println(lproperties.stringPropertyNames()))
     lproperties.stringPropertyNames().forEach(name =>  
       {
-        properties += name->lproperties.getProperty(name);
+        properties += name -> lproperties.getProperty(name);
       
       }
     )
