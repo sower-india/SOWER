@@ -1,4 +1,4 @@
-package com.sower.datagenerator
+package com.sower.rdbms
 
 trait DataGenerator {
   
