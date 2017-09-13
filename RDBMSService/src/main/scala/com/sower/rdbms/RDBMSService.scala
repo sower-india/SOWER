@@ -1,11 +1,6 @@
 package com.sower.rdbms
 
-trait DataGenerator {
+object RDBMSService {
   
-  def parseFile(inputFile:String):Map[String, DataGenerator] = {
-    
-    
-    ???
-  }
-  
+//def getConnection(connectionURL:String): Connection  
 }
