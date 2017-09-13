@@ -4,6 +4,8 @@ import java.sql.Connection
 import com.util.PropertyReader
 import com.util.CommonConstants
 import java.sql.ResultSet
+import java.sql.Statement
+import java.sql.PreparedStatement
 
 object RDBMSConnection {
   
@@ -12,33 +14,52 @@ object RDBMSConnection {
     
     val reader:PropertyReader  = new PropertyReader();
     val userName:String = reader.getProperty(CommonConstants.USERNAME);
-    ???
+    
+    val url:String = reader.getProperty(CommonConstants.URL);
+    val password:String = reader.getProperty(CommonConstants.PASSWORD);
+    val driver:String = reader.getProperty(CommonConstants.DRIVER);
+    var connection: Connection = null
+
+    Class.forName(driver)
+    DriverManager.getConnection(url, userName, password);
+  }
+  
+  
+  def readData(sqlQuery:String):ResultSet ={
+    val connection:Connection=getConnection();
+    
+    val statement:Statement = connection.createStatement();
+    val results=statement.executeQuery(sqlQuery);
+    if(connection!=null)
+    {
+      connection.close();
+    }
+    
+    results;
     
   }
   
-  def readData(sqlQuery:String):ResultSet ={
-    ???
+  def populateData():Boolean={
+    
+    val insertAddressQuery:String = "insert into table suresh values (?,?,?)"; 
+    val connection:Connection = getConnection();
+    val statement:PreparedStatement=connection.prepareStatement(insertAddressQuery);
+    statement.setString(0, "TESTC");
+    statement.setString(1, "TESTTx");
+    statement.setString(2, "TESTON");
+    val inserted=statement.execute();
+     if(connection!=null)
+    {
+      connection.close();
+    }
+    
+    inserted;
+    
   }
 
   def main(args: Array[String]): Unit = {
 
-    val driver = "com.mysql.jdbc.Driver"
-    val url = "jdbc:mysql://localhost/sower"
-    val username = "root"
-    val password = "root"
-
-    var connection: Connection = null
-
-    Class.forName(driver)
-    println("hi1")
-    connection = DriverManager.getConnection(url, username, password)
-    println("hi")
-    val statement = connection.createStatement()
-    val resultset = statement.executeUpdate("create table trns(custid int Primary key,name varchar(20),pancard Int unique)")
-
-
-    connection.close()
-
+   populateData();
   }
 
 }

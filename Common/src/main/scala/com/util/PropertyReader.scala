@@ -1,6 +1,8 @@
 package com.util
 
 import scala.io.Source
+import java.util.Properties
+import java.io.FileInputStream
 
 /**
  * This is created by suresh
@@ -28,21 +30,22 @@ class PropertyReader {
   private def loadProperties(fileName:String):Unit=
   {
    
-    val iter:Iterator[String] = Source.fromFile(fileName).getLines();
+//    val iter:Iterator[String] = Source.fromFile(fileName).getLines();
     
-    while(iter.hasNext){
-     
-      val keyValues:Array[String]=iter.next().split("=");
-      
-      properties += keyValues(0) -> keyValues(1);
-      
-    }
+    val lproperties:Properties = new Properties();
+    lproperties.load(new FileInputStream(fileName));
     
+    lproperties.stringPropertyNames().forEach(name =>  
+      {
+        properties += name->lproperties.getProperty(name);
+      
+      }
+    )
   }
   
   def getProperty(key:String): String =
   {
-   if(properties==null)
+   if(properties==null || properties.isEmpty)
    {
      if(propertyFileName==null){
       loadProperties(); 
