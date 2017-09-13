@@ -1,8 +1,24 @@
 
 import java.sql.DriverManager
 import java.sql.Connection
+import com.util.PropertyReader
+import com.util.CommonConstants
+import java.sql.ResultSet
 
 object RDBMSConnection {
+  
+  
+  def getConnection():Connection ={
+    
+    val reader:PropertyReader  = new PropertyReader();
+    val userName:String = reader.getProperty(CommonConstants.USERNAME);
+    ???
+    
+  }
+  
+  def readData(sqlQuery:String):ResultSet ={
+    ???
+  }
 
   def main(args: Array[String]): Unit = {
 
