@@ -1,4 +1,4 @@
-
+pacakage com.util;
 import java.sql.DriverManager
 import java.sql.Connection
 import com.util.PropertyReader
@@ -41,12 +41,12 @@ object RDBMSConnection {
   
   def populateData():Boolean={
     
-    val insertAddressQuery:String = "insert into table suresh values (?,?,?)"; 
+    val insertAddressQuery:String = "insert into suresh(customer,transaction,order_name) values (?,?,?)"; 
     val connection:Connection = getConnection();
     val statement:PreparedStatement=connection.prepareStatement(insertAddressQuery);
-    statement.setString(0, "TESTC");
-    statement.setString(1, "TESTTx");
-    statement.setString(2, "TESTON");
+    statement.setString(1, "TESTC");
+    statement.setString(2, "TESTTx");
+    statement.setString(3, "TESTON");
     val inserted=statement.execute();
      if(connection!=null)
     {

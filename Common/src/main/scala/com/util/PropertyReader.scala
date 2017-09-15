@@ -30,18 +30,22 @@ class PropertyReader {
   private def loadProperties(fileName:String):Unit=
   {
    
-//    val iter:Iterator[String] = Source.fromFile(fileName).getLines();
     
     val lproperties:Properties = new Properties();
     lproperties.load(new FileInputStream(fileName));
 //    lproperties.forEach()
-    lproperties.stringPropertyNames().forEach(name =>  
-      {
-        properties += name -> lproperties.getProperty(name);
-      
-      }
-    )
+    
+    val names = lproperties.stringPropertyNames();
+    
+    val iterator = names.iterator();
+    
+    while(iterator.hasNext())
+    {
+      val key = iterator.next();
+      properties += key -> lproperties.getProperty(key);
+    }
   }
+  
   
   def getProperty(key:String): String =
   {
