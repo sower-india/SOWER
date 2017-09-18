@@ -1,4 +1,4 @@
-pacakage com.util;
+package com.util;
 import java.sql.DriverManager
 import java.sql.Connection
 import com.util.PropertyReader
@@ -40,13 +40,14 @@ object RDBMSConnection {
   }
   
   def populateData():Boolean={
+  
     
     val insertAddressQuery:String = "insert into suresh(customer,transaction,order_name) values (?,?,?)"; 
     val connection:Connection = getConnection();
     val statement:PreparedStatement=connection.prepareStatement(insertAddressQuery);
     statement.setString(1, "TESTC");
-    statement.setString(2, "TESTTx");
-    statement.setString(3, "TESTON");
+    statement.setString(2, "TEST");
+    statement.setString(3, "TEST");
     val inserted=statement.execute();
      if(connection!=null)
     {
