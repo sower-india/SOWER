@@ -1,11 +1,9 @@
 package com.util;
-import java.sql.DriverManager
 import java.sql.Connection
-import com.util.PropertyReader
-import com.util.CommonConstants
+import java.sql.DriverManager
+import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.sql.Statement
-import java.sql.PreparedStatement
 
 object RDBMSConnection {
   

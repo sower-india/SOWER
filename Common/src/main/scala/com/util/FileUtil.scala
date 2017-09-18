@@ -1,11 +1,11 @@
 package com.util
 
-import reflect.io
 import java.io.File
 import scala.io.Source
 import java.io.FilenameFilter
 
 object FileUtil  {
+  
   def readLines(fileName:String):List[String] = {
     Source.fromFile(fileName).getLines().toList;    
   }
@@ -39,5 +39,11 @@ object FileUtil  {
         file.getName.endsWith(extensions)
     }
 }
+  
+  def main(args: Array[String]): Unit = {
+    val inputDir = args(0);
+    val inputFile = new File(inputDir);
+    val files = getListOfFiles(inputFile, args(1)).foreach(f=> println(f.getAbsolutePath));
+  }
   
 }
