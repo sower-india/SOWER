@@ -5,4 +5,5 @@ object CommonConstants {
   val URL:String="URL";
   val PASSWORD:String="PASSWORD";
   val DRIVER:String="DRIVER_CLASS_NAME";
+
 }
