@@ -1,7 +1,8 @@
 SourceName=SOWER
 SourceSchemaName=SOWER
 EntityName=ADDRESS
-TEMPLATE_LOCATION=/home/edureka/SOWER/ADDRESS.template
+TEMPLATE_LOCATION=/home/edureka/SOWER/TEMPLATES/ADDRESS.template
+SOURCE_FILE=/home/edureka/SOWER/SOURCES/ADDRESS.csv
 RecordCount=000000073427
 ExtractDate=2015-03-17
 ExtractTime=04:42:28
