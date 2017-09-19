@@ -1,0 +1,1 @@
+@PrimaryKeyIdGenerator("ADDRESS"),@AddressGenerator("CITY"),@AddressGenerator("STATE),@AddressGenerator("ZIPCODE")
